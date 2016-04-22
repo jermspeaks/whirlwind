@@ -1,10 +1,14 @@
+# Note
+
+This is a fork of [xolvio/whirlwind](https://github.com/xolvio/whirlwind). This is an experimental repo, so please use with caution.
+
 [![Whirlwind](https://raw.githubusercontent.com/xolvio/whirlwind/develop/whirlwind.png)](https://github.com/xolvio/whirlwind#readme) Whirlwind by [Xolv.io](http://xolv.io)
 --------------------
 [![Circle CI](https://circleci.com/gh/xolvio/whirlwind.svg?style=svg)](https://circleci.com/gh/xolvio/whirlwind) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xolvio/chimp)
 
 Reduce your test suite time from hours to minutes on TravisCI, CircleCI, CodeShip and even locally.
 
-Whirlwind takes set of tasks that you wish to distribute, such as slow end-to-end tests, and runs them across compute 
+Whirlwind takes set of tasks that you wish to distribute, such as slow end-to-end tests, and runs them across compute
 nodes (parallelism), as well as within compute nodes (concurrency).  
 
 The tasks source can be either a predefined list, or a directory.
@@ -17,12 +21,12 @@ the tasks pass, you get a clean exit code. If any fail, you see the error and de
 
 ### Can I do more than that?
 
-Yep. You can add pre-processors and post-processors to do some setup and finalizing. For example, if you're running 
-end-to-end tests, you'll probably want to start a server first, or you may want to instrument all your files before 
+Yep. You can add pre-processors and post-processors to do some setup and finalizing. For example, if you're running
+end-to-end tests, you'll probably want to start a server first, or you may want to instrument all your files before
 running your tests. And when the tests finish, you may want to pick up all the reports and post them somewhere.
 
 You can also configure other tweaks, such as batch vs single mode. For example, a tool like Cucumber would work better
-when it is provided with a batch of files to run, where as a tool that only takes a single paramater would work in 
+when it is provided with a batch of files to run, where as a tool that only takes a single paramater would work in
 single mode.
 
 ## Installation
@@ -39,10 +43,10 @@ Enjoy your build time being taken down from hours to minutes!
 
 ### Using a Configuration File
 
-Let's go through the configuration file step-by-step: 
+Let's go through the configuration file step-by-step:
 
 #### Node Count
-First you define the total number of nodes and the current node id. You typically have these set as environment 
+First you define the total number of nodes and the current node id. You typically have these set as environment
 variables by CI servers, so you just have to let Whirlwins know what these are like this:
 ```json
 {
@@ -80,20 +84,20 @@ Next you define a process like this:
 
 * **`processor.module`** The runner to use. The `exec-runner` exposes node's `child_process.exec`       
 
-* **`processor.source`** The tasks that will be disributed across and within nodes / containers. You can either use a 
+* **`processor.source`** The tasks that will be disributed across and within nodes / containers. You can either use a
 `directory` with a glob `pattern` or you can also use a `list` instead and provide an `['array', 'of', 'strings']`.
 
-* **`processor.moduleOptions`** These options are used by the `exec-runner`. Currently the `exec-runner` is the only 
-available runner but we will soon add more and allow you to drop in your own modules. Notice the use of $TASKS. This is 
-where the tasks from the `source` are used. If you don't specify a `separator`, the files are passed to the script as a 
+* **`processor.moduleOptions`** These options are used by the `exec-runner`. Currently the `exec-runner` is the only
+available runner but we will soon add more and allow you to drop in your own modules. Notice the use of $TASKS. This is
+where the tasks from the `source` are used. If you don't specify a `separator`, the files are passed to the script as a
 space-separated flat array of files / strings.
 
-* **`processor.mode`** This can either be `"batch"` (default) or `"single"`. In single mode, the process receives the 
+* **`processor.mode`** This can either be `"batch"` (default) or `"single"`. In single mode, the process receives the
 tasks one by one. In batch mode, the tasks are flattened into a set of paramters to pass to the executable module.
 
-You may specify multiple processors in the configuration files. For example, you might have one processor defined with 
-a parallelism of 5 and a concurrency of 1 for your end-to-end tests, and another processor for your integration tests 
-that with a parallelism of 2 and a concurrency of 3. This means you'd be utilising 7 nodes / containers. 
+You may specify multiple processors in the configuration files. For example, you might have one processor defined with
+a parallelism of 5 and a concurrency of 1 for your end-to-end tests, and another processor for your integration tests
+that with a parallelism of 2 and a concurrency of 3. This means you'd be utilising 7 nodes / containers.
 
 #### Pre-Processors and Post-Processors
 
@@ -114,11 +118,11 @@ pre-processors like this:
     "parallelism": 1,
     "processor": {
 ```
-Pre-processors are just like normal processes, they just don't support parallelism or concurrency. They are defined 
-within the same object as the `processor` under the `processes` namespace. The exact same thing works for 
+Pre-processors are just like normal processes, they just don't support parallelism or concurrency. They are defined
+within the same object as the `processor` under the `processes` namespace. The exact same thing works for
 `postProcessors`.
-   
-   
+
+
 #### Full Configuration File
 ```json
 {

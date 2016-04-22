@@ -5,7 +5,6 @@
   "preferGlobal": "true",
   "bin": "dist/bin/whirlwind.js",
   "scripts": {
-    "preinstall": ". ./scripts/prepublish.sh",
     "prepublish": ". ./scripts/prepublish.sh",
     "lint": "eslint ./src",
     "lintfix": "eslint ./src --fix",
@@ -37,9 +36,9 @@
   "author": "Sam Hatoum",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xolvio/whirlwind/issues"
+    "url": "https://github.com/jermspeaks/whirlwind/issues"
   },
-  "homepage": "https://github.com/xolvio/whirlwind#readme",
+  "homepage": "https://github.com/jermspeaks/whirlwind#readme",
   "dependencies": {
     "async": "^1.5.0",
     "babel-runtime": "6.x.x",
