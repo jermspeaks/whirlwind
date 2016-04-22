@@ -1,6 +1,6 @@
 {
   "name": "whirlwind",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Reduce your build times exponentially by using parallelism and concurrency on TravisCI / CircleCI / CodeShip / Locally / Anywhere!",
   "preferGlobal": "true",
   "bin": "dist/bin/whirlwind.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xolvio/whirlwind.git"
+    "url": "git+https://github.com/jermspeaks/whirlwind.git"
   },
   "keywords": [
     "parallel",
