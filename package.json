@@ -1,6 +1,6 @@
 {
   "name": "whirlwind",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Reduce your build times exponentially by using parallelism and concurrency on TravisCI / CircleCI / CodeShip / Locally / Anywhere!",
   "preferGlobal": "true",
   "bin": "dist/bin/whirlwind.js",
