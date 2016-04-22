@@ -5,6 +5,7 @@
   "preferGlobal": "true",
   "bin": "dist/bin/whirlwind.js",
   "scripts": {
+    "preinstall": ". ./scripts/prepublish.sh",
     "prepublish": ". ./scripts/prepublish.sh",
     "lint": "eslint ./src",
     "lintfix": "eslint ./src --fix",
